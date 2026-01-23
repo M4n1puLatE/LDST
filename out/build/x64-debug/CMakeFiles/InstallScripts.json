@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"D:/Code/Project/LDST/out/build/x64-debug/cmake_install.cmake",
+		"D:/Code/Project/LDST/out/build/x64-debug/LDST/cmake_install.cmake",
+		"D:/Code/Project/LDST/out/build/x64-debug/MemoryPool/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
