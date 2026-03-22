@@ -14,13 +14,12 @@
 		"commands" : 
 		[
 			"add_executable",
-			"target_link_libraries",
-			"target_include_directories"
+			"target_include_directories",
+			"set_property"
 		],
 		"files" : 
 		[
-			"LDST/CMakeLists.txt",
-			"MemoryPool/CMakeLists.txt"
+			"LDST/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -36,23 +35,14 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 17,
+				"line" : 14,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 14,
+				"line" : 11,
 				"parent" : 0
-			},
-			{
-				"file" : 1
-			},
-			{
-				"command" : 2,
-				"file" : 1,
-				"line" : 16,
-				"parent" : 4
 			}
 		]
 	},
@@ -68,12 +58,8 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 3,
+					"backtrace" : 2,
 					"path" : "D:/Code/Project/LDST/LDST/include"
-				},
-				{
-					"backtrace" : 5,
-					"path" : "D:/Code/Project/LDST/MemoryPool/include"
 				}
 			],
 			"language" : "CXX",
@@ -81,7 +67,7 @@
 			{
 				"backtraces" : 
 				[
-					0
+					3
 				],
 				"standard" : "20"
 			},
@@ -89,13 +75,6 @@
 			[
 				0
 			]
-		}
-	],
-	"dependencies" : 
-	[
-		{
-			"backtrace" : 2,
-			"id" : "MemoryPool::@bad776c5a976225463d7"
 		}
 	],
 	"id" : "LDST::@e655cec6671bed259192",
@@ -114,11 +93,6 @@
 			{
 				"fragment" : "/subsystem:console",
 				"role" : "flags"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "MemoryPool\\MemoryPool.lib",
-				"role" : "libraries"
 			},
 			{
 				"fragment" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",

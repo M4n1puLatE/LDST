@@ -7,13 +7,9 @@ file(GLOB SOURCES
     "src/*.cpp"
 )
 
-if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET LDST PROPERTY CXX_STANDARD 20)
-endif()
-
 add_library(MemoryPool STATIC ${SOURCES})
 
-target_include_directories(LDST PRIVATE
+target_include_directories(MemoryPool PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 # TODO: 如有需要，请添加测试并安装目标。

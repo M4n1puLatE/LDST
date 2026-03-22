@@ -14,5 +14,4 @@ endif()
 target_include_directories(LDST PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include)
    
-target_link_libraries(LDST PRIVATE MemoryPool)
 # TODO: 如有需要，请添加测试并安装目标。

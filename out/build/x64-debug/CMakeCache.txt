@@ -226,6 +226,15 @@ LDST_IS_TOP_LEVEL:STATIC=OFF
 LDST_SOURCE_DIR:STATIC=D:/Code/Project/LDST/LDST
 
 //Value Computed by CMake
+Linear_BINARY_DIR:STATIC=D:/Code/Project/LDST/out/build/x64-debug/Linear
+
+//Value Computed by CMake
+Linear_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+Linear_SOURCE_DIR:STATIC=D:/Code/Project/LDST/Linear
+
+//Value Computed by CMake
 MemoryPool_BINARY_DIR:STATIC=D:/Code/Project/LDST/out/build/x64-debug/MemoryPool
 
 //Value Computed by CMake
@@ -233,6 +242,24 @@ MemoryPool_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 MemoryPool_SOURCE_DIR:STATIC=D:/Code/Project/LDST/MemoryPool
+
+//Value Computed by CMake
+Test_BINARY_DIR:STATIC=D:/Code/Project/LDST/out/build/x64-debug/Test
+
+//Value Computed by CMake
+Test_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+Test_SOURCE_DIR:STATIC=D:/Code/Project/LDST/Test
+
+//Value Computed by CMake
+Tester_BINARY_DIR:STATIC=D:/Code/Project/LDST/out/build/x64-debug/Tester
+
+//Value Computed by CMake
+Tester_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+Tester_SOURCE_DIR:STATIC=D:/Code/Project/LDST/Tester
 
 
 ########################
@@ -248,7 +275,7 @@ CMAKE_CACHE_MAJOR_VERSION:INTERNAL=4
 //Minor version of cmake used to create the current loaded cache
 CMAKE_CACHE_MINOR_VERSION:INTERNAL=1
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=1
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=2
 //Path to CMake executable.
 CMAKE_COMMAND:INTERNAL=D:/App/vs2026/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe
 //Path to cpack program executable.
@@ -329,7 +356,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MT
 CMAKE_MT-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
 //Platform information initialized
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 //noop for ranlib

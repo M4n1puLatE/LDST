@@ -1,4 +1,41 @@
 {
+	"globsDependent" : 
+	[
+		{
+			"expression" : "D:/Code/Project/LDST/Linear/include/*.h",
+			"paths" : 
+			[
+				"D:/Code/Project/LDST/Linear/include/Linear.h",
+				"D:/Code/Project/LDST/Linear/include/Node.h"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "D:/Code/Project/LDST/Linear/src/*.cpp",
+			"paths" : 
+			[
+				"D:/Code/Project/LDST/Linear/src/Linear.cpp"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "D:/Code/Project/LDST/Tester/include/*.h",
+			"paths" : 
+			[
+				"D:/Code/Project/LDST/Tester/include/Tester.h",
+				"D:/Code/Project/LDST/Tester/include/Tests.h"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "D:/Code/Project/LDST/Tester/src/*.cpp",
+			"paths" : 
+			[
+				"D:/Code/Project/LDST/Tester/src/Tests.cpp"
+			],
+			"recurse" : true
+		}
+	],
 	"inputs" : 
 	[
 		{
@@ -6,7 +43,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "out/build/x64-debug/CMakeFiles/4.1.1-msvc1/CMakeSystem.cmake"
+			"path" : "out/build/x64-debug/CMakeFiles/4.1.2-msvc8/CMakeSystem.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -20,11 +57,11 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "out/build/x64-debug/CMakeFiles/4.1.1-msvc1/CMakeCCompiler.cmake"
+			"path" : "out/build/x64-debug/CMakeFiles/4.1.2-msvc8/CMakeCCompiler.cmake"
 		},
 		{
 			"isGenerated" : true,
-			"path" : "out/build/x64-debug/CMakeFiles/4.1.1-msvc1/CMakeCXXCompiler.cmake"
+			"path" : "out/build/x64-debug/CMakeFiles/4.1.2-msvc8/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -88,7 +125,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "out/build/x64-debug/CMakeFiles/4.1.1-msvc1/CMakeRCCompiler.cmake"
+			"path" : "out/build/x64-debug/CMakeFiles/4.1.2-msvc8/CMakeRCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -204,7 +241,10 @@
 			"path" : "LDST/CMakeLists.txt"
 		},
 		{
-			"path" : "MemoryPool/CMakeLists.txt"
+			"path" : "Tester/CMakeLists.txt"
+		},
+		{
+			"path" : "Linear/CMakeLists.txt"
 		}
 	],
 	"kind" : "cmakeFiles",

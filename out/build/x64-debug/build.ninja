@@ -18,7 +18,7 @@
 #############################################
 # Minimal version of Ninja required by this file
 
-ninja_required_version = 1.5
+ninja_required_version = 1.8
 
 
 #############################################
@@ -75,12 +75,12 @@ build rebuild_cache: phony CMakeFiles\rebuild_cache.util
 #############################################
 # Order-only phony target for LDST
 
-build cmake_object_order_depends_target_LDST: phony || cmake_object_order_depends_target_MemoryPool
+build cmake_object_order_depends_target_LDST: phony || .
 
 build LDST\CMakeFiles\LDST.dir\src\LDST.cpp.obj: CXX_COMPILER__LDST_unscanned_Debug D$:\Code\Project\LDST\LDST\src\LDST.cpp || cmake_object_order_depends_target_LDST
   CONFIG = Debug
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -ID:\Code\Project\LDST\LDST\include -ID:\Code\Project\LDST\MemoryPool\include
+  INCLUDES = -ID:\Code\Project\LDST\LDST\include
   OBJECT_DIR = LDST\CMakeFiles\LDST.dir
   OBJECT_FILE_DIR = LDST\CMakeFiles\LDST.dir\src
   TARGET_COMPILE_PDB = LDST\CMakeFiles\LDST.dir\
@@ -94,11 +94,11 @@ build LDST\CMakeFiles\LDST.dir\src\LDST.cpp.obj: CXX_COMPILER__LDST_unscanned_De
 #############################################
 # Link the executable LDST\LDST.exe
 
-build LDST\LDST.exe: CXX_EXECUTABLE_LINKER__LDST_Debug LDST\CMakeFiles\LDST.dir\src\LDST.cpp.obj | MemoryPool\MemoryPool.lib || MemoryPool\MemoryPool.lib
+build LDST\LDST.exe: CXX_EXECUTABLE_LINKER__LDST_Debug LDST\CMakeFiles\LDST.dir\src\LDST.cpp.obj
   CONFIG = Debug
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
-  LINK_LIBRARIES = MemoryPool\MemoryPool.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
+  LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
   OBJECT_DIR = LDST\CMakeFiles\LDST.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -136,63 +136,131 @@ build LDST\rebuild_cache: phony LDST\CMakeFiles\rebuild_cache.util
 # =============================================================================
 
 # =============================================================================
-# Object build statements for STATIC_LIBRARY target MemoryPool
+# Object build statements for EXECUTABLE target Tester
 
 
 #############################################
-# Order-only phony target for MemoryPool
+# Order-only phony target for Tester
 
-build cmake_object_order_depends_target_MemoryPool: phony || .
+build cmake_object_order_depends_target_Tester: phony || .
 
-build MemoryPool\CMakeFiles\MemoryPool.dir\src\LDST.cpp.obj: CXX_COMPILER__MemoryPool_unscanned_Debug D$:\Code\Project\LDST\MemoryPool\src\LDST.cpp || cmake_object_order_depends_target_MemoryPool
+build Tester\CMakeFiles\Tester.dir\src\Tests.cpp.obj: CXX_COMPILER__Tester_unscanned_Debug D$:\Code\Project\LDST\Tester\src\Tests.cpp || cmake_object_order_depends_target_Tester
   CONFIG = Debug
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1 -std:c++20
-  OBJECT_DIR = MemoryPool\CMakeFiles\MemoryPool.dir
-  OBJECT_FILE_DIR = MemoryPool\CMakeFiles\MemoryPool.dir\src
-  TARGET_COMPILE_PDB = MemoryPool\CMakeFiles\MemoryPool.dir\MemoryPool.pdb
-  TARGET_PDB = MemoryPool\MemoryPool.pdb
+  INCLUDES = -ID:\Code\Project\LDST\Tester\include
+  OBJECT_DIR = Tester\CMakeFiles\Tester.dir
+  OBJECT_FILE_DIR = Tester\CMakeFiles\Tester.dir\src
+  TARGET_COMPILE_PDB = Tester\CMakeFiles\Tester.dir\
+  TARGET_PDB = Tester\Tester.pdb
 
 
 # =============================================================================
-# Link build statements for STATIC_LIBRARY target MemoryPool
+# Link build statements for EXECUTABLE target Tester
 
 
 #############################################
-# Link the static library MemoryPool\MemoryPool.lib
+# Link the executable Tester\Tester.exe
 
-build MemoryPool\MemoryPool.lib: CXX_STATIC_LIBRARY_LINKER__MemoryPool_Debug MemoryPool\CMakeFiles\MemoryPool.dir\src\LDST.cpp.obj
+build Tester\Tester.exe: CXX_EXECUTABLE_LINKER__Tester_Debug Tester\CMakeFiles\Tester.dir\src\Tests.cpp.obj
   CONFIG = Debug
-  LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1
-  LINK_FLAGS = /machine:x64
-  OBJECT_DIR = MemoryPool\CMakeFiles\MemoryPool.dir
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1
+  LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
+  LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
+  OBJECT_DIR = Tester\CMakeFiles\Tester.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = MemoryPool\CMakeFiles\MemoryPool.dir\MemoryPool.pdb
-  TARGET_FILE = MemoryPool\MemoryPool.lib
-  TARGET_PDB = MemoryPool\MemoryPool.pdb
+  TARGET_COMPILE_PDB = Tester\CMakeFiles\Tester.dir\
+  TARGET_FILE = Tester\Tester.exe
+  TARGET_IMPLIB = Tester\Tester.lib
+  TARGET_PDB = Tester\Tester.pdb
 
 
 #############################################
 # Utility command for edit_cache
 
-build MemoryPool\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Code\Project\LDST\out\build\x64-debug\MemoryPool && D:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -E echo "No interactive CMake dialog available.""
+build Tester\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Code\Project\LDST\out\build\x64-debug\Tester && D:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
-build MemoryPool\edit_cache: phony MemoryPool\CMakeFiles\edit_cache.util
+build Tester\edit_cache: phony Tester\CMakeFiles\edit_cache.util
 
 
 #############################################
 # Utility command for rebuild_cache
 
-build MemoryPool\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Code\Project\LDST\out\build\x64-debug\MemoryPool && D:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe --regenerate-during-build -SD:\Code\Project\LDST -BD:\Code\Project\LDST\out\build\x64-debug"
+build Tester\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Code\Project\LDST\out\build\x64-debug\Tester && D:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe --regenerate-during-build -SD:\Code\Project\LDST -BD:\Code\Project\LDST\out\build\x64-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
 
-build MemoryPool\rebuild_cache: phony MemoryPool\CMakeFiles\rebuild_cache.util
+build Tester\rebuild_cache: phony Tester\CMakeFiles\rebuild_cache.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# D:/Code/Project/LDST/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target Linear
+
+
+#############################################
+# Order-only phony target for Linear
+
+build cmake_object_order_depends_target_Linear: phony || .
+
+build Linear\CMakeFiles\Linear.dir\src\Linear.cpp.obj: CXX_COMPILER__Linear_unscanned_Debug D$:\Code\Project\LDST\Linear\src\Linear.cpp || cmake_object_order_depends_target_Linear
+  CONFIG = Debug
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1 -std:c++20
+  INCLUDES = -ID:\Code\Project\LDST\Linear\include
+  OBJECT_DIR = Linear\CMakeFiles\Linear.dir
+  OBJECT_FILE_DIR = Linear\CMakeFiles\Linear.dir\src
+  TARGET_COMPILE_PDB = Linear\CMakeFiles\Linear.dir\Linear.pdb
+  TARGET_PDB = Linear\Linear.pdb
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target Linear
+
+
+#############################################
+# Link the static library Linear\Linear.lib
+
+build Linear\Linear.lib: CXX_STATIC_LIBRARY_LINKER__Linear_Debug Linear\CMakeFiles\Linear.dir\src\Linear.cpp.obj
+  CONFIG = Debug
+  LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1
+  LINK_FLAGS = /machine:x64
+  OBJECT_DIR = Linear\CMakeFiles\Linear.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_COMPILE_PDB = Linear\CMakeFiles\Linear.dir\Linear.pdb
+  TARGET_FILE = Linear\Linear.lib
+  TARGET_PDB = Linear\Linear.pdb
+
+
+#############################################
+# Utility command for edit_cache
+
+build Linear\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Code\Project\LDST\out\build\x64-debug\Linear && D:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build Linear\edit_cache: phony Linear\CMakeFiles\edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build Linear\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Code\Project\LDST\out\build\x64-debug\Linear && D:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe --regenerate-during-build -SD:\Code\Project\LDST -BD:\Code\Project\LDST\out\build\x64-debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build Linear\rebuild_cache: phony Linear\CMakeFiles\rebuild_cache.util
 
 # =============================================================================
 # Target aliases.
@@ -201,9 +269,13 @@ build LDST: phony LDST\LDST.exe
 
 build LDST.exe: phony LDST\LDST.exe
 
-build MemoryPool: phony MemoryPool\MemoryPool.lib
+build Linear: phony Linear\Linear.lib
 
-build MemoryPool.lib: phony MemoryPool\MemoryPool.lib
+build Linear.lib: phony Linear\Linear.lib
+
+build Tester: phony Tester\Tester.exe
+
+build Tester.exe: phony Tester\Tester.exe
 
 # =============================================================================
 # Folder targets.
@@ -213,7 +285,7 @@ build MemoryPool.lib: phony MemoryPool\MemoryPool.lib
 #############################################
 # Folder: D:/Code/Project/LDST/out/build/x64-debug
 
-build all: phony LDST\all MemoryPool\all
+build all: phony LDST\all Tester\all Linear\all
 
 # =============================================================================
 
@@ -225,25 +297,46 @@ build LDST\all: phony LDST\LDST.exe
 # =============================================================================
 
 #############################################
-# Folder: D:/Code/Project/LDST/out/build/x64-debug/MemoryPool
+# Folder: D:/Code/Project/LDST/out/build/x64-debug/Linear
 
-build MemoryPool\all: phony MemoryPool\MemoryPool.lib
+build Linear\all: phony Linear\Linear.lib
+
+# =============================================================================
+
+#############################################
+# Folder: D:/Code/Project/LDST/out/build/x64-debug/Tester
+
+build Tester\all: phony Tester\Tester.exe
 
 # =============================================================================
 # Built-in targets
 
 
 #############################################
+# Phony target to force glob verification run.
+
+build D$:\Code\Project\LDST\out\build\x64-debug\CMakeFiles\VerifyGlobs.cmake_force: phony
+
+
+#############################################
+# Re-run CMake to check if globbed directories changed.
+
+build D$:\Code\Project\LDST\out\build\x64-debug\CMakeFiles\cmake.verify_globs: VERIFY_GLOBS | D$:\Code\Project\LDST\out\build\x64-debug\CMakeFiles\VerifyGlobs.cmake_force
+  pool = console
+  restat = 1
+
+
+#############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja D$:\Code\Project\LDST\out\build\x64-debug\cmake_install.cmake D$:\Code\Project\LDST\out\build\x64-debug\LDST\cmake_install.cmake D$:\Code\Project\LDST\out\build\x64-debug\MemoryPool\cmake_install.cmake: RERUN_CMAKE | CMakeCache.txt CMakeFiles\4.1.1-msvc1\CMakeCCompiler.cmake CMakeFiles\4.1.1-msvc1\CMakeCXXCompiler.cmake CMakeFiles\4.1.1-msvc1\CMakeRCCompiler.cmake CMakeFiles\4.1.1-msvc1\CMakeSystem.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeCInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeCXXInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeCommonLanguageInclude.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeGenericSystem.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeInitializeConfigs.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeLanguageInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeRCInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeSystemSpecificInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeSystemSpecificInitialize.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Compiler\CMakeCommonCompilerMacros.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Compiler\MSVC-C.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Compiler\MSVC-CXX.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Compiler\MSVC.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Internal\CMakeCLinkerInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Internal\CMakeCXXLinkerInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Internal\CMakeCommonLinkerInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Linker\MSVC-C.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Linker\MSVC-CXX.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Linker\MSVC.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC-C.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC-CXX.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows-Initialize.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC-C.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC-CXX.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\WindowsPaths.cmake D$:\Code\Project\LDST\CMakeLists.txt D$:\Code\Project\LDST\LDST\CMakeLists.txt D$:\Code\Project\LDST\MemoryPool\CMakeLists.txt
+build build.ninja D$:\Code\Project\LDST\out\build\x64-debug\cmake_install.cmake D$:\Code\Project\LDST\out\build\x64-debug\LDST\cmake_install.cmake D$:\Code\Project\LDST\out\build\x64-debug\Tester\cmake_install.cmake D$:\Code\Project\LDST\out\build\x64-debug\Linear\cmake_install.cmake: RERUN_CMAKE D$:\Code\Project\LDST\out\build\x64-debug\CMakeFiles\cmake.verify_globs | CMakeCache.txt CMakeFiles\4.1.2-msvc8\CMakeCCompiler.cmake CMakeFiles\4.1.2-msvc8\CMakeCXXCompiler.cmake CMakeFiles\4.1.2-msvc8\CMakeRCCompiler.cmake CMakeFiles\4.1.2-msvc8\CMakeSystem.cmake D$:\Code\Project\LDST\out\build\x64-debug\CMakeFiles\VerifyGlobs.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeCInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeCXXInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeCommonLanguageInclude.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeGenericSystem.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeInitializeConfigs.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeLanguageInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeRCInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeSystemSpecificInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeSystemSpecificInitialize.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Compiler\CMakeCommonCompilerMacros.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Compiler\MSVC-C.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Compiler\MSVC-CXX.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Compiler\MSVC.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Internal\CMakeCLinkerInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Internal\CMakeCXXLinkerInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Internal\CMakeCommonLinkerInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Linker\MSVC-C.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Linker\MSVC-CXX.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Linker\MSVC.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC-C.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC-CXX.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows-Initialize.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC-C.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC-CXX.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\WindowsPaths.cmake D$:\Code\Project\LDST\CMakeLists.txt D$:\Code\Project\LDST\LDST\CMakeLists.txt D$:\Code\Project\LDST\Linear\CMakeLists.txt D$:\Code\Project\LDST\Tester\CMakeLists.txt
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build CMakeCache.txt CMakeFiles\4.1.1-msvc1\CMakeCCompiler.cmake CMakeFiles\4.1.1-msvc1\CMakeCXXCompiler.cmake CMakeFiles\4.1.1-msvc1\CMakeRCCompiler.cmake CMakeFiles\4.1.1-msvc1\CMakeSystem.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeCInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeCXXInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeCommonLanguageInclude.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeGenericSystem.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeInitializeConfigs.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeLanguageInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeRCInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeSystemSpecificInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeSystemSpecificInitialize.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Compiler\CMakeCommonCompilerMacros.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Compiler\MSVC-C.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Compiler\MSVC-CXX.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Compiler\MSVC.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Internal\CMakeCLinkerInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Internal\CMakeCXXLinkerInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Internal\CMakeCommonLinkerInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Linker\MSVC-C.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Linker\MSVC-CXX.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Linker\MSVC.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC-C.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC-CXX.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows-Initialize.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC-C.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC-CXX.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\WindowsPaths.cmake D$:\Code\Project\LDST\CMakeLists.txt D$:\Code\Project\LDST\LDST\CMakeLists.txt D$:\Code\Project\LDST\MemoryPool\CMakeLists.txt: phony
+build CMakeCache.txt CMakeFiles\4.1.2-msvc8\CMakeCCompiler.cmake CMakeFiles\4.1.2-msvc8\CMakeCXXCompiler.cmake CMakeFiles\4.1.2-msvc8\CMakeRCCompiler.cmake CMakeFiles\4.1.2-msvc8\CMakeSystem.cmake D$:\Code\Project\LDST\out\build\x64-debug\CMakeFiles\VerifyGlobs.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeCInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeCXXInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeCommonLanguageInclude.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeGenericSystem.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeInitializeConfigs.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeLanguageInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeRCInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeSystemSpecificInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\CMakeSystemSpecificInitialize.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Compiler\CMakeCommonCompilerMacros.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Compiler\MSVC-C.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Compiler\MSVC-CXX.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Compiler\MSVC.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Internal\CMakeCLinkerInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Internal\CMakeCXXLinkerInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Internal\CMakeCommonLinkerInformation.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Linker\MSVC-C.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Linker\MSVC-CXX.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Linker\MSVC.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC-C.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC-CXX.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows-Initialize.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC-C.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC-CXX.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\Windows.cmake D$:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.1\Modules\Platform\WindowsPaths.cmake D$:\Code\Project\LDST\CMakeLists.txt D$:\Code\Project\LDST\LDST\CMakeLists.txt D$:\Code\Project\LDST\Linear\CMakeLists.txt D$:\Code\Project\LDST\Tester\CMakeLists.txt: phony
 
 
 #############################################
