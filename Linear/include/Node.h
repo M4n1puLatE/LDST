@@ -5,8 +5,30 @@
 
 template<std::default_initializable T>
 concept Container =
-std::constructible_from<T, const T&>&& // 可拷贝构造
-std::constructible_from<T, T&&>;
+std::default_initializable<T> &&           // 默认构造函数
+std::copy_constructible<T> &&              // 拷贝构造函数
+std::move_constructible<T> &&              // 移动构造函数
+	requires(const T & a, const T & b)
+{
+	{
+		a == b
+	} -> std::convertible_to<bool>;  // 相等比较
+	{
+		a != b
+	} -> std::convertible_to<bool>;  // 不等比较
+	{
+		a < b
+	}  -> std::convertible_to<bool>;  // 小于比较
+	{
+		a <= b
+	} -> std::convertible_to<bool>;  // 小于等于比较
+	{
+		a > b
+	}  -> std::convertible_to<bool>;  // 大于比较
+	{
+		a >= b
+	} -> std::convertible_to<bool>;  // 大于等于比较
+};
 #define CONTAINER template<Container T>
 namespace Collection
 {
@@ -21,14 +43,22 @@ namespace Collection
 			: m_next(nullptr)
 		{}
 		Node(const T& data)
-			: m_next(nullptr)
-		{
-			m_data = data;
-		}
+			:m_data(data),m_next(nullptr)
+		{}
 		Node(Node&& node) noexcept
-			:m_data(std::move(node.m_data)),m_next(node.m_next)
+			:m_data(std::move(node.m_data)), m_next(node.m_next)
 		{
 			node.m_next = nullptr;
+		}
+		Node(Node* prev, Node* next)
+			:m_next(next)
+		{
+			prev->m_next = this;
+		}
+		Node(const T& data,Node* prev, Node* next)
+			:m_data(data),m_next(next)
+		{
+			prev->m_next = this;
 		}
 		T* next()
 		{
@@ -50,9 +80,10 @@ namespace Collection
 		{
 			m_data = std::move(data);
 		}
-		int count()const
+		[[nodiscard]]
+		size_t count()const
 		{
-			int count = 0;
+			size_t count = 0;
 			auto tempPtr = m_next;
 			while (tempPtr != nullptr)
 			{
@@ -88,6 +119,11 @@ namespace Collection
 			m_data = std::move(node.m_data);
 			m_next = node.m_next;
 			node.m_next = nullptr;
+			return *this;
+		}
+		Node& operator=(Node* next)
+		{
+			setNext(next);
 			return *this;
 		}
 	};

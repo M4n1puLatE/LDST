@@ -6,7 +6,9 @@
 			"paths" : 
 			[
 				"D:/Code/Project/LDST/Linear/include/Linear.h",
-				"D:/Code/Project/LDST/Linear/include/Node.h"
+				"D:/Code/Project/LDST/Linear/include/LinkList.h",
+				"D:/Code/Project/LDST/Linear/include/Node.h",
+				"D:/Code/Project/LDST/Linear/include/SyncNode.h"
 			],
 			"recurse" : true
 		},

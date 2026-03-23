@@ -73,7 +73,7 @@
 			},
 			"sourceIndexes" : 
 			[
-				2
+				4
 			]
 		}
 	],
@@ -92,14 +92,16 @@
 			"sourceIndexes" : 
 			[
 				0,
-				1
+				1,
+				2,
+				3
 			]
 		},
 		{
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				2
+				4
 			]
 		}
 	],
@@ -112,7 +114,17 @@
 		},
 		{
 			"backtrace" : 1,
+			"path" : "Linear/include/LinkList.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
 			"path" : "Linear/include/Node.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Linear/include/SyncNode.h",
 			"sourceGroupIndex" : 0
 		},
 		{

@@ -5,7 +5,9 @@
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "D:/Code/Project/LDST/Linear/include/*.h")
 set(OLD_GLOB
   "D:/Code/Project/LDST/Linear/include/Linear.h"
+  "D:/Code/Project/LDST/Linear/include/LinkList.h"
   "D:/Code/Project/LDST/Linear/include/Node.h"
+  "D:/Code/Project/LDST/Linear/include/SyncNode.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
