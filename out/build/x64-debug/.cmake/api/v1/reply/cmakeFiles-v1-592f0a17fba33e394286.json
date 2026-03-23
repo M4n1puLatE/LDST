@@ -5,6 +5,7 @@
 			"expression" : "D:/Code/Project/LDST/Linear/include/*.h",
 			"paths" : 
 			[
+				"D:/Code/Project/LDST/Linear/include/Collection.h",
 				"D:/Code/Project/LDST/Linear/include/Linear.h",
 				"D:/Code/Project/LDST/Linear/include/LinkList.h",
 				"D:/Code/Project/LDST/Linear/include/Node.h",

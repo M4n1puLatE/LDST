@@ -184,6 +184,8 @@ namespace Collection
 		{
 			try
 			{
+				if (empty())
+					return false;
 				if (where == 0)
 				{
 					auto head = m_head;
@@ -212,6 +214,8 @@ namespace Collection
 			{
 				return false;
 			}
+			else if (where == 0 && count == m_size)
+                clear();
 			Node<T>* prev = where == 0 ? m_head : iterateUntil(where-1);
             Node<T>* begin = prev->next();
 			Node<T>* end = iterate(begin, count);
@@ -225,7 +229,6 @@ namespace Collection
 			}
 			delete end;
 			return true;
-
 		}
 		void reserve(size_t size)
 		{
@@ -276,6 +279,19 @@ namespace Collection
 			m_head = nullptr;
 			m_end = nullptr;
 			m_size = 0;
+		}
+		bool set(size_t index, const T& value)
+		{
+			try
+			{
+				iterateUntil(index)->update(value);
+				return true;
+			}
+			catch (Exceptions::OutOfRangeException& e)
+			{
+				std::cerr << e.what();
+				return false;
+			}
 		}
 		size_t count(const T& value)
 		{

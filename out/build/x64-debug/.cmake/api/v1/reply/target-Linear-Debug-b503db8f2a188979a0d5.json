@@ -73,7 +73,7 @@
 			},
 			"sourceIndexes" : 
 			[
-				4
+				5
 			]
 		}
 	],
@@ -94,19 +94,25 @@
 				0,
 				1,
 				2,
-				3
+				3,
+				4
 			]
 		},
 		{
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				4
+				5
 			]
 		}
 	],
 	"sources" : 
 	[
+		{
+			"backtrace" : 1,
+			"path" : "Linear/include/Collection.h",
+			"sourceGroupIndex" : 0
+		},
 		{
 			"backtrace" : 1,
 			"path" : "Linear/include/Linear.h",
