@@ -7,7 +7,8 @@ target_include_directories(${PROJECT_NAME}
     PUBLIC
         ${PROJECT_SOURCE_DIR}/include
 )
-link_libraries(Tester
+target_link_libraries(Tester
     PUBLIC
         Linear
+        Util
 )

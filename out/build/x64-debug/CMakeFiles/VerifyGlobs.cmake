@@ -9,6 +9,7 @@ set(OLD_GLOB
   "D:/Code/Project/LDST/Linear/include/LinkList.h"
   "D:/Code/Project/LDST/Linear/include/Node.h"
   "D:/Code/Project/LDST/Linear/include/SyncNode.h"
+  "D:/Code/Project/LDST/Linear/include/Views.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -28,6 +29,7 @@ endif()
 # srcs at Tester/CMakeLists.txt:2 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "D:/Code/Project/LDST/Tester/include/*.h")
 set(OLD_GLOB
+  "D:/Code/Project/LDST/Tester/include/LinkListTester.h"
   "D:/Code/Project/LDST/Tester/include/Tester.h"
   "D:/Code/Project/LDST/Tester/include/Tests.h"
   )
@@ -39,7 +41,29 @@ endif()
 # srcs at Tester/CMakeLists.txt:2 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "D:/Code/Project/LDST/Tester/src/*.cpp")
 set(OLD_GLOB
+  "D:/Code/Project/LDST/Tester/src/LinkListTester.cpp"
   "D:/Code/Project/LDST/Tester/src/Tests.cpp"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  file(TOUCH_NOCREATE "D:/Code/Project/LDST/out/build/x64-debug/CMakeFiles/cmake.verify_globs")
+endif()
+
+# srcs at Util/CMakeLists.txt:2 (file)
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "D:/Code/Project/LDST/Util/include/*.h")
+set(OLD_GLOB
+  "D:/Code/Project/LDST/Util/include/Timer.h"
+  "D:/Code/Project/LDST/Util/include/Util.h"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  file(TOUCH_NOCREATE "D:/Code/Project/LDST/out/build/x64-debug/CMakeFiles/cmake.verify_globs")
+endif()
+
+# srcs at Util/CMakeLists.txt:2 (file)
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "D:/Code/Project/LDST/Util/src/*.cpp")
+set(OLD_GLOB
+  "D:/Code/Project/LDST/Util/src/Util.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

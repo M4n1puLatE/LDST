@@ -7,14 +7,26 @@
 },
 {
   "directory": "D:/Code/Project/LDST/out/build/x64-debug",
-  "command": "D:\\App\\vs2026\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -ID:\\Code\\Project\\LDST\\Tester\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1 -std:c++20 /FoTester\\CMakeFiles\\Tester.dir\\src\\Tests.cpp.obj /FdTester\\CMakeFiles\\Tester.dir\\ /FS -c D:\\Code\\Project\\LDST\\Tester\\src\\Tests.cpp",
+  "command": "D:\\App\\vs2026\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -ID:\\Code\\Project\\LDST\\Linear\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1 -std:c++20 /FoLinear\\CMakeFiles\\Linear.dir\\src\\Linear.cpp.obj /FdLinear\\CMakeFiles\\Linear.dir\\Linear.pdb /FS -c D:\\Code\\Project\\LDST\\Linear\\src\\Linear.cpp",
+  "file": "D:/Code/Project/LDST/Linear/src/Linear.cpp",
+  "output": "D:/Code/Project/LDST/out/build/x64-debug/Linear/CMakeFiles/Linear.dir/src/Linear.cpp.obj"
+},
+{
+  "directory": "D:/Code/Project/LDST/out/build/x64-debug",
+  "command": "D:\\App\\vs2026\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -ID:\\Code\\Project\\LDST\\Tester\\include -ID:\\Code\\Project\\LDST\\Linear\\include -ID:\\Code\\Project\\LDST\\Util\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1 -std:c++20 /FoTester\\CMakeFiles\\Tester.dir\\src\\LinkListTester.cpp.obj /FdTester\\CMakeFiles\\Tester.dir\\ /FS -c D:\\Code\\Project\\LDST\\Tester\\src\\LinkListTester.cpp",
+  "file": "D:/Code/Project/LDST/Tester/src/LinkListTester.cpp",
+  "output": "D:/Code/Project/LDST/out/build/x64-debug/Tester/CMakeFiles/Tester.dir/src/LinkListTester.cpp.obj"
+},
+{
+  "directory": "D:/Code/Project/LDST/out/build/x64-debug",
+  "command": "D:\\App\\vs2026\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -ID:\\Code\\Project\\LDST\\Tester\\include -ID:\\Code\\Project\\LDST\\Linear\\include -ID:\\Code\\Project\\LDST\\Util\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1 -std:c++20 /FoTester\\CMakeFiles\\Tester.dir\\src\\Tests.cpp.obj /FdTester\\CMakeFiles\\Tester.dir\\ /FS -c D:\\Code\\Project\\LDST\\Tester\\src\\Tests.cpp",
   "file": "D:/Code/Project/LDST/Tester/src/Tests.cpp",
   "output": "D:/Code/Project/LDST/out/build/x64-debug/Tester/CMakeFiles/Tester.dir/src/Tests.cpp.obj"
 },
 {
   "directory": "D:/Code/Project/LDST/out/build/x64-debug",
-  "command": "D:\\App\\vs2026\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -ID:\\Code\\Project\\LDST\\Linear\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1 -std:c++20 /FoLinear\\CMakeFiles\\Linear.dir\\src\\Linear.cpp.obj /FdLinear\\CMakeFiles\\Linear.dir\\Linear.pdb /FS -c D:\\Code\\Project\\LDST\\Linear\\src\\Linear.cpp",
-  "file": "D:/Code/Project/LDST/Linear/src/Linear.cpp",
-  "output": "D:/Code/Project/LDST/out/build/x64-debug/Linear/CMakeFiles/Linear.dir/src/Linear.cpp.obj"
+  "command": "D:\\App\\vs2026\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -ID:\\Code\\Project\\LDST\\Util\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1 -std:c++20 /FoUtil\\CMakeFiles\\Util.dir\\src\\Util.cpp.obj /FdUtil\\CMakeFiles\\Util.dir\\Util.pdb /FS -c D:\\Code\\Project\\LDST\\Util\\src\\Util.cpp",
+  "file": "D:/Code/Project/LDST/Util/src/Util.cpp",
+  "output": "D:/Code/Project/LDST/out/build/x64-debug/Util/CMakeFiles/Util.dir/src/Util.cpp.obj"
 }
 ]

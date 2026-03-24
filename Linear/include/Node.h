@@ -64,7 +64,8 @@ namespace Collection
 		{
 			return m_next;
 		}
-		bool hasNext()
+		[[nodiscard]]
+		bool hasNext()const
 		{
 			return m_next != nullptr;
 		}

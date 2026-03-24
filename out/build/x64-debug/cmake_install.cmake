@@ -35,8 +35,9 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("D:/Code/Project/LDST/out/build/x64-debug/LDST/cmake_install.cmake")
-  include("D:/Code/Project/LDST/out/build/x64-debug/Tester/cmake_install.cmake")
   include("D:/Code/Project/LDST/out/build/x64-debug/Linear/cmake_install.cmake")
+  include("D:/Code/Project/LDST/out/build/x64-debug/Tester/cmake_install.cmake")
+  include("D:/Code/Project/LDST/out/build/x64-debug/Util/cmake_install.cmake")
 
 endif()
 

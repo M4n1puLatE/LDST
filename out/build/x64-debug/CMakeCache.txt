@@ -261,6 +261,15 @@ Tester_IS_TOP_LEVEL:STATIC=OFF
 //Value Computed by CMake
 Tester_SOURCE_DIR:STATIC=D:/Code/Project/LDST/Tester
 
+//Value Computed by CMake
+Util_BINARY_DIR:STATIC=D:/Code/Project/LDST/out/build/x64-debug/Util
+
+//Value Computed by CMake
+Util_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+Util_SOURCE_DIR:STATIC=D:/Code/Project/LDST/Util
+
 
 ########################
 # INTERNAL cache entries
@@ -356,7 +365,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MT
 CMAKE_MT-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
 //Platform information initialized
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 //noop for ranlib

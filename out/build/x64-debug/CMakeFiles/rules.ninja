@@ -75,6 +75,53 @@ rule CXX_EXECUTABLE_LINKER__LDST_Debug
 #############################################
 # Rule for generating CXX dependencies.
 
+rule CXX_SCAN__Linear_Debug
+  deps = msvc
+  command = D:\App\vs2026\VC\Tools\MSVC\14.50.35717\bin\Hostx64\x64\cl.exe $DEFINES $INCLUDES $FLAGS $in -nologo -TP -showIncludes -scanDependencies $DYNDEP_INTERMEDIATE_FILE -Fo$OBJ_FILE
+  description = Scanning $in for CXX dependencies
+
+
+#############################################
+# Rule to generate ninja dyndep files for CXX.
+
+rule CXX_DYNDEP__Linear_Debug
+  command = D:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -E cmake_ninja_dyndep --tdi=Linear\CMakeFiles\Linear.dir\CXXDependInfo.json --lang=CXX --modmapfmt=msvc --dd=$out @$out.rsp
+  description = Generating CXX dyndep file $out
+  rspfile = $out.rsp
+  rspfile_content = $in
+  restat = 1
+
+
+#############################################
+# Rule for compiling CXX files.
+
+rule CXX_COMPILER__Linear_scanned_Debug
+  deps = msvc
+  command = ${LAUNCHER}${CODE_CHECK}D:\App\vs2026\VC\Tools\MSVC\14.50.35717\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes @$DYNDEP_MODULE_MAP_FILE /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for compiling CXX files.
+
+rule CXX_COMPILER__Linear_unscanned_Debug
+  deps = msvc
+  command = ${LAUNCHER}${CODE_CHECK}D:\App\vs2026\VC\Tools\MSVC\14.50.35717\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for linking CXX static library.
+
+rule CXX_STATIC_LIBRARY_LINKER__Linear_Debug
+  command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && D:\App\vs2026\VC\Tools\MSVC\14.50.35717\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in && $POST_BUILD"
+  description = Linking CXX static library $TARGET_FILE
+  restat = $RESTAT
+
+
+#############################################
+# Rule for generating CXX dependencies.
+
 rule CXX_SCAN__Tester_Debug
   deps = msvc
   command = D:\App\vs2026\VC\Tools\MSVC\14.50.35717\bin\Hostx64\x64\cl.exe $DEFINES $INCLUDES $FLAGS $in -nologo -TP -showIncludes -scanDependencies $DYNDEP_INTERMEDIATE_FILE -Fo$OBJ_FILE
@@ -122,7 +169,7 @@ rule CXX_EXECUTABLE_LINKER__Tester_Debug
 #############################################
 # Rule for generating CXX dependencies.
 
-rule CXX_SCAN__Linear_Debug
+rule CXX_SCAN__Util_Debug
   deps = msvc
   command = D:\App\vs2026\VC\Tools\MSVC\14.50.35717\bin\Hostx64\x64\cl.exe $DEFINES $INCLUDES $FLAGS $in -nologo -TP -showIncludes -scanDependencies $DYNDEP_INTERMEDIATE_FILE -Fo$OBJ_FILE
   description = Scanning $in for CXX dependencies
@@ -131,8 +178,8 @@ rule CXX_SCAN__Linear_Debug
 #############################################
 # Rule to generate ninja dyndep files for CXX.
 
-rule CXX_DYNDEP__Linear_Debug
-  command = D:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -E cmake_ninja_dyndep --tdi=Linear\CMakeFiles\Linear.dir\CXXDependInfo.json --lang=CXX --modmapfmt=msvc --dd=$out @$out.rsp
+rule CXX_DYNDEP__Util_Debug
+  command = D:\App\vs2026\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -E cmake_ninja_dyndep --tdi=Util\CMakeFiles\Util.dir\CXXDependInfo.json --lang=CXX --modmapfmt=msvc --dd=$out @$out.rsp
   description = Generating CXX dyndep file $out
   rspfile = $out.rsp
   rspfile_content = $in
@@ -142,7 +189,7 @@ rule CXX_DYNDEP__Linear_Debug
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__Linear_scanned_Debug
+rule CXX_COMPILER__Util_scanned_Debug
   deps = msvc
   command = ${LAUNCHER}${CODE_CHECK}D:\App\vs2026\VC\Tools\MSVC\14.50.35717\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes @$DYNDEP_MODULE_MAP_FILE /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
@@ -151,7 +198,7 @@ rule CXX_COMPILER__Linear_scanned_Debug
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__Linear_unscanned_Debug
+rule CXX_COMPILER__Util_unscanned_Debug
   deps = msvc
   command = ${LAUNCHER}${CODE_CHECK}D:\App\vs2026\VC\Tools\MSVC\14.50.35717\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
@@ -160,7 +207,7 @@ rule CXX_COMPILER__Linear_unscanned_Debug
 #############################################
 # Rule for linking CXX static library.
 
-rule CXX_STATIC_LIBRARY_LINKER__Linear_Debug
+rule CXX_STATIC_LIBRARY_LINKER__Util_Debug
   command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && D:\App\vs2026\VC\Tools\MSVC\14.50.35717\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in && $POST_BUILD"
   description = Linking CXX static library $TARGET_FILE
   restat = $RESTAT

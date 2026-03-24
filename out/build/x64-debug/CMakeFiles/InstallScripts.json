@@ -3,8 +3,9 @@
 	[
 		"D:/Code/Project/LDST/out/build/x64-debug/cmake_install.cmake",
 		"D:/Code/Project/LDST/out/build/x64-debug/LDST/cmake_install.cmake",
+		"D:/Code/Project/LDST/out/build/x64-debug/Linear/cmake_install.cmake",
 		"D:/Code/Project/LDST/out/build/x64-debug/Tester/cmake_install.cmake",
-		"D:/Code/Project/LDST/out/build/x64-debug/Linear/cmake_install.cmake"
+		"D:/Code/Project/LDST/out/build/x64-debug/Util/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

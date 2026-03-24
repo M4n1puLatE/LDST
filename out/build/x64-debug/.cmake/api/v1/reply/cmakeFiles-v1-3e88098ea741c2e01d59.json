@@ -9,7 +9,8 @@
 				"D:/Code/Project/LDST/Linear/include/Linear.h",
 				"D:/Code/Project/LDST/Linear/include/LinkList.h",
 				"D:/Code/Project/LDST/Linear/include/Node.h",
-				"D:/Code/Project/LDST/Linear/include/SyncNode.h"
+				"D:/Code/Project/LDST/Linear/include/SyncNode.h",
+				"D:/Code/Project/LDST/Linear/include/Views.h"
 			],
 			"recurse" : true
 		},
@@ -25,6 +26,7 @@
 			"expression" : "D:/Code/Project/LDST/Tester/include/*.h",
 			"paths" : 
 			[
+				"D:/Code/Project/LDST/Tester/include/LinkListTester.h",
 				"D:/Code/Project/LDST/Tester/include/Tester.h",
 				"D:/Code/Project/LDST/Tester/include/Tests.h"
 			],
@@ -34,7 +36,25 @@
 			"expression" : "D:/Code/Project/LDST/Tester/src/*.cpp",
 			"paths" : 
 			[
+				"D:/Code/Project/LDST/Tester/src/LinkListTester.cpp",
 				"D:/Code/Project/LDST/Tester/src/Tests.cpp"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "D:/Code/Project/LDST/Util/include/*.h",
+			"paths" : 
+			[
+				"D:/Code/Project/LDST/Util/include/Timer.h",
+				"D:/Code/Project/LDST/Util/include/Util.h"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "D:/Code/Project/LDST/Util/src/*.cpp",
+			"paths" : 
+			[
+				"D:/Code/Project/LDST/Util/src/Util.cpp"
 			],
 			"recurse" : true
 		}
@@ -244,10 +264,13 @@
 			"path" : "LDST/CMakeLists.txt"
 		},
 		{
+			"path" : "Linear/CMakeLists.txt"
+		},
+		{
 			"path" : "Tester/CMakeLists.txt"
 		},
 		{
-			"path" : "Linear/CMakeLists.txt"
+			"path" : "Util/CMakeLists.txt"
 		}
 	],
 	"kind" : "cmakeFiles",

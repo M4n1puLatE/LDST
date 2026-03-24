@@ -78,7 +78,7 @@ namespace Tester
 			m_usePrecise = false;
 			m_preciseTimer.reset();
 		}
-		void add(const string& name, test_function test)
+		void add(std::string_view name, test_function test)
 		{
 			auto pair = make_pair(name, test);
 			m_tests.emplace(pair);

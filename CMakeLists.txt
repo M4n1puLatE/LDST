@@ -16,6 +16,9 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # 添加子目录
 add_subdirectory("LDST")
+add_subdirectory("Linear")
 add_subdirectory("Tester")
 #添加 Linear 到项目中
-add_subdirectory("Linear")
+
+#添加 Util 到项目中
+add_subdirectory("Util")

@@ -14,6 +14,7 @@
 		"commands" : 
 		[
 			"add_executable",
+			"target_link_libraries",
 			"target_include_directories"
 		],
 		"files" : 
@@ -34,6 +35,12 @@
 			{
 				"command" : 1,
 				"file" : 0,
+				"line" : 10,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
 				"line" : 6,
 				"parent" : 0
 			}
@@ -51,8 +58,16 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"path" : "D:/Code/Project/LDST/Tester/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "D:/Code/Project/LDST/Linear/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "D:/Code/Project/LDST/Util/include"
 				}
 			],
 			"language" : "CXX",
@@ -66,8 +81,20 @@
 			},
 			"sourceIndexes" : 
 			[
-				2
+				3,
+				4
 			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "Linear::@273961348539268a46ea"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "Util::@985804b4fac11ee930c3"
 		}
 	],
 	"id" : "Tester::@9af287883fc10626b147",
@@ -86,6 +113,16 @@
 			{
 				"fragment" : "/subsystem:console",
 				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "Linear\\Linear.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "Util\\Util.lib",
+				"role" : "libraries"
 			},
 			{
 				"fragment" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
@@ -108,19 +145,26 @@
 			"sourceIndexes" : 
 			[
 				0,
-				1
+				1,
+				2
 			]
 		},
 		{
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				2
+				3,
+				4
 			]
 		}
 	],
 	"sources" : 
 	[
+		{
+			"backtrace" : 1,
+			"path" : "Tester/include/LinkListTester.h",
+			"sourceGroupIndex" : 0
+		},
 		{
 			"backtrace" : 1,
 			"path" : "Tester/include/Tester.h",
@@ -130,6 +174,12 @@
 			"backtrace" : 1,
 			"path" : "Tester/include/Tests.h",
 			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Tester/src/LinkListTester.cpp",
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
