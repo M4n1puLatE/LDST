@@ -5,7 +5,6 @@
 #include <iostream>
 
 #include "Views.h"
-#include "Collection.h"
 #include "Node.h"
 
 namespace Collection
@@ -14,14 +13,15 @@ namespace Collection
 	{
 		class OutOfRangeException : public std::exception
 		{
-			std::string_view variable;
+			mutable std::string variable;
 		public:
 			OutOfRangeException(std::string_view str) noexcept
 				:variable(str)
 			{}
 			const char* what() const noexcept override
 			{
-				return std::format("[OutOfRangeException] thrown by {}",variable).c_str();
+				variable = std::format("[OutOfRangeException] thrown by {}\n", variable);
+				return variable.c_str();
 			}
 		};
 		
@@ -30,7 +30,7 @@ namespace Collection
 	namespace Linear
 	{
 		CONTAINER
-			class LinkList: public CollectionOperation<LinkList<T>>
+		class LinkList
 		{
 			size_t m_size;
 			Node<T>* m_head;
@@ -46,11 +46,20 @@ namespace Collection
 					return iterate(m_head, index);
 				}
 			}
-			Node<T>* iterateUntil(const T& value)
+			const Node<T>* iterateUntil(size_t index)const
+			{
+				if (index >= m_size)
+					throw Exceptions::OutOfRangeException(__func__);
+				else
+				{
+					return iterate(m_head, index);
+				}
+			}
+			Node<T>* iterateUntilValue(const T& value)const
 			{
 				return iterate(m_head, value, m_size);
 			}
-			std::pair<Node<T>,Node<T>> iterateIterval(size_t index, size_t end)
+			std::pair<const Node<T>*, const Node<T>*> iterateInterval(size_t index, size_t end)const
 			{
 				if (index >= m_size || end >= m_size)
 					throw Exceptions::OutOfRangeException(__func__);
@@ -66,6 +75,23 @@ namespace Collection
 					finish = finish->next();
 				}
 				return std::make_pair(begin,finish);
+			}
+			std::pair<Node<T>*, Node<T>*> iterateNonInterval(size_t index, size_t end)
+			{
+				if (index >= m_size || end > m_size)
+					throw Exceptions::OutOfRangeException(__func__);
+				Node<T>* begin = m_head;
+				size_t n = 0;
+				for (; n < index; n++)
+				{
+					begin = begin->next();
+				}
+				Node<T>* finish = begin;
+				for (; n < end; ++n)
+				{
+					finish = finish->next();
+				}
+				return std::make_pair(begin, finish);
 			}
 			static Node<T>* iterate(Node<T>* begin, size_t index)
 			{
@@ -97,7 +123,7 @@ namespace Collection
 			{}
 			View::ListView<Node<T>> range(size_t begin, size_t end)
 			{
-				if (end >= begin && end < m_size)
+				if (end >= begin && end <= m_size)
 					return View::ListView<Node<T>>(iterateUntil(begin), end - begin);
 				else
 					return View::ListView<Node<T>>();
@@ -138,11 +164,12 @@ namespace Collection
 					removeFrom(object.size(), m_size - object.size());
 			}
 			LinkList(const LinkList& object)
-				:m_size(object.m_size)
+				:LinkList()
 			{
-				add(object);
+				overwrite(object);
 			}
 			LinkList(const std::initializer_list<T>& values)
+				:LinkList()
 			{
 				add(values);
 			}
@@ -154,6 +181,7 @@ namespace Collection
 				move.m_size = 0;
 			}
 			LinkList(size_t size)
+				:LinkList()
 			{
 				reserve(size);
 			}
@@ -197,19 +225,32 @@ namespace Collection
 			}
 			bool contains(const T& value)const
 			{
-				return iterateUntil(value) != nullptr;
+				return iterateUntilValue(value) != nullptr;
 			}
 			bool insert(size_t where, const T& value)
 			{
 				try
 				{
-					if (where == 0)
+					if (where == m_size-1)
 					{
 						add(value);
 						return true;
 					}
+					else if (where == 0)
+					{
+						if (m_head)
+						{
+							m_head = new Node<T>(value, nullptr, m_head);
+							m_size++;
+						}
+						else
+						{
+							add(value);
+						}
+						return true;
+					}
 
-					auto ptr = iterateUntil(where);
+					auto ptr = iterateUntil(where-1);
 					ptr->setNext(new Node<T>(value, ptr, ptr->next()));
 					++m_size;
 					return true;
@@ -226,16 +267,21 @@ namespace Collection
 				{
 					if (empty())
 						return false;
+					Node<T>* ptr;
+					Node<T>* cur;
 					if (where == 0)
 					{
-						auto head = m_head;
-						m_head = head->next();
-						delete head;
-						return true;
+						cur = m_head;
+						m_head = cur->next();
 					}
-					auto ptr = iterateUntil(where - 1);
-					auto cur = ptr->next();
-					ptr->setNext(cur->next());
+					else
+					{
+						ptr = iterateUntil(where - 1);
+						cur = ptr->next();
+						ptr->setNext(cur->next());
+						if (where == m_size - 1)
+                            m_end = ptr;
+					}
 					delete cur;
 					--m_size;
 					return true;
@@ -255,20 +301,46 @@ namespace Collection
 					return false;
 				}
 				else if (where == 0 && count == m_size)
-					clear();
-				Node<T>* prev = where == 0 ? m_head : iterateUntil(where - 1);
-				Node<T>* begin = prev->next();
-				Node<T>* end = iterate(begin, count);
-				prev->setNext(end->next());
-				end->setNext(nullptr);
-				while (begin != end)
 				{
-					prev = begin;
-					delete prev;
-					begin = begin->next();
+					clear();
+					return true;
+				}				
+				try
+				{
+					std::pair<Node<T>*, Node<T>*> interval;
+					if (where == 0)
+					{
+						interval = iterateNonInterval(0, count-1);
+						m_head = interval.second->next();
+					}
+					else
+					{
+						interval = iterateNonInterval(where - 1, where + count - 1);
+					}
+					auto [father, end] = interval;
+					Node<T>* begin = father->next();
+					father->setNext(end->next());
+					end->setNext(nullptr);
+					if (end == m_end)
+					{
+						m_end = father;
+					}
+					father = begin;
+					while (begin != nullptr)
+					{
+						father = father->next();
+						delete begin;
+
+                        begin = father;
+					}
+					m_size -= count;
+					return true;
 				}
-				delete end;
-				return true;
+				catch (Exceptions::OutOfRangeException& e)
+				{
+					std::cerr << e.what();
+					return false;
+				}
 			}
 			void reserve(size_t size)
 			{
@@ -309,13 +381,13 @@ namespace Collection
 			//设置所有成员变量为初始值，并回收内存
 			void clear()
 			{
-				T* iter = m_head;
-				while (m_head != m_end && m_head != nullptr)
+				auto* iter = m_head;
+				while (iter != nullptr)
 				{
-					m_head = iter->next;
+					auto* next = iter->next();
 					delete iter;
+					iter = next;
 				}
-				delete m_end;
 				m_head = nullptr;
 				m_end = nullptr;
 				m_size = 0;

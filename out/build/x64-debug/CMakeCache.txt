@@ -20,14 +20,14 @@ CMAKE_AR:FILEPATH=D:/App/vs2026/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/lib.ex
 //No help, variable specified on the command line.
 CMAKE_BUILD_TYPE:STRING=Debug
 
-//No help, variable specified on the command line.
-CMAKE_CXX_COMPILER:STRING=cl.exe
+//CXX compiler
+CMAKE_CXX_COMPILER:STRING=D:/App/vs2026/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe
 
 //Flags used by the CXX compiler during all build types.
 CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /W3 /GR /EHsc
 
 //Flags used by the CXX compiler during DEBUG builds.
-CMAKE_CXX_FLAGS_DEBUG:STRING=/MDd /Ob0 /Od /RTC1
+CMAKE_CXX_FLAGS_DEBUG:STRING=/MDd /Zi /Ob0 /Od /RTC1
 
 //Flags used by the CXX compiler during MINSIZEREL builds.
 CMAKE_CXX_FLAGS_MINSIZEREL:STRING=/MD /O1 /Ob1 /DNDEBUG
@@ -36,19 +36,19 @@ CMAKE_CXX_FLAGS_MINSIZEREL:STRING=/MD /O1 /Ob1 /DNDEBUG
 CMAKE_CXX_FLAGS_RELEASE:STRING=/MD /O2 /Ob2 /DNDEBUG
 
 //Flags used by the CXX compiler during RELWITHDEBINFO builds.
-CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=/MD /O2 /Ob1 /DNDEBUG
+CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=/MD /Zi /O2 /Ob1 /DNDEBUG
 
 //Libraries linked by default with all C++ applications.
 CMAKE_CXX_STANDARD_LIBRARIES:STRING=kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
 
-//No help, variable specified on the command line.
-CMAKE_C_COMPILER:STRING=cl.exe
+//C compiler
+CMAKE_C_COMPILER:STRING=D:/App/vs2026/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe
 
 //Flags used by the C compiler during all build types.
 CMAKE_C_FLAGS:STRING=/DWIN32 /D_WINDOWS /W3
 
 //Flags used by the C compiler during DEBUG builds.
-CMAKE_C_FLAGS_DEBUG:STRING=/MDd /Ob0 /Od /RTC1
+CMAKE_C_FLAGS_DEBUG:STRING=/MDd /Zi /Ob0 /Od /RTC1
 
 //Flags used by the C compiler during MINSIZEREL builds.
 CMAKE_C_FLAGS_MINSIZEREL:STRING=/MD /O1 /Ob1 /DNDEBUG
@@ -57,7 +57,7 @@ CMAKE_C_FLAGS_MINSIZEREL:STRING=/MD /O1 /Ob1 /DNDEBUG
 CMAKE_C_FLAGS_RELEASE:STRING=/MD /O2 /Ob2 /DNDEBUG
 
 //Flags used by the C compiler during RELWITHDEBINFO builds.
-CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=/MD /O2 /Ob1 /DNDEBUG
+CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=/MD /Zi /O2 /Ob1 /DNDEBUG
 
 //Libraries linked by default with all C applications.
 CMAKE_C_STANDARD_LIBRARIES:STRING=kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
@@ -130,21 +130,6 @@ CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 //Value Computed by CMake
 CMAKE_PROJECT_NAME:STATIC=LDST
 
-//Value Computed by CMake
-CMAKE_PROJECT_VERSION:STATIC=
-
-//Value Computed by CMake
-CMAKE_PROJECT_VERSION_MAJOR:STATIC=
-
-//Value Computed by CMake
-CMAKE_PROJECT_VERSION_MINOR:STATIC=
-
-//Value Computed by CMake
-CMAKE_PROJECT_VERSION_PATCH:STATIC=
-
-//Value Computed by CMake
-CMAKE_PROJECT_VERSION_TWEAK:STATIC=
-
 //RC compiler
 CMAKE_RC_COMPILER:FILEPATH=C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/rc.exe
 
@@ -210,6 +195,9 @@ CMAKE_STATIC_LINKER_FLAGS_RELEASE:STRING=
 // during RELWITHDEBINFO builds.
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
+//The CMake toolchain file
+CMAKE_TOOLCHAIN_FILE:FILEPATH=C:/src/vcpkg/scripts/buildsystems/vcpkg.cmake
+
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
 // during the make.  This is useful for debugging only. With Visual
@@ -235,24 +223,6 @@ Linear_IS_TOP_LEVEL:STATIC=OFF
 Linear_SOURCE_DIR:STATIC=D:/Code/Project/LDST/Linear
 
 //Value Computed by CMake
-MemoryPool_BINARY_DIR:STATIC=D:/Code/Project/LDST/out/build/x64-debug/MemoryPool
-
-//Value Computed by CMake
-MemoryPool_IS_TOP_LEVEL:STATIC=OFF
-
-//Value Computed by CMake
-MemoryPool_SOURCE_DIR:STATIC=D:/Code/Project/LDST/MemoryPool
-
-//Value Computed by CMake
-Test_BINARY_DIR:STATIC=D:/Code/Project/LDST/out/build/x64-debug/Test
-
-//Value Computed by CMake
-Test_IS_TOP_LEVEL:STATIC=OFF
-
-//Value Computed by CMake
-Test_SOURCE_DIR:STATIC=D:/Code/Project/LDST/Test
-
-//Value Computed by CMake
 Tester_BINARY_DIR:STATIC=D:/Code/Project/LDST/out/build/x64-debug/Tester
 
 //Value Computed by CMake
@@ -269,6 +239,55 @@ Util_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 Util_SOURCE_DIR:STATIC=D:/Code/Project/LDST/Util
+
+//Automatically copy dependencies into the output directory for
+// executables.
+VCPKG_APPLOCAL_DEPS:BOOL=ON
+
+//The directory which contains the installed libraries for each
+// triplet
+VCPKG_INSTALLED_DIR:PATH=C:/src/vcpkg/installed
+
+//The path to the vcpkg manifest directory.
+VCPKG_MANIFEST_DIR:PATH=
+
+//Use manifest mode, as opposed to classic mode.
+VCPKG_MANIFEST_MODE:BOOL=OFF
+
+//Appends the vcpkg paths to CMAKE_PREFIX_PATH, CMAKE_LIBRARY_PATH
+// and CMAKE_FIND_ROOT_PATH so that vcpkg libraries/packages are
+// found after toolchain/system libraries/packages.
+VCPKG_PREFER_SYSTEM_LIBS:BOOL=OFF
+
+//Enable the setup of CMAKE_PROGRAM_PATH to vcpkg paths
+VCPKG_SETUP_CMAKE_PROGRAM_PATH:BOOL=ON
+
+//Vcpkg target triplet (ex. x86-windows)
+VCPKG_TARGET_TRIPLET:STRING=x64-windows
+
+//Trace calls to find_package()
+VCPKG_TRACE_FIND_PACKAGE:BOOL=OFF
+
+//Enables messages from the VCPKG toolchain for debugging purposes.
+VCPKG_VERBOSE:BOOL=OFF
+
+//(experimental) Automatically copy dependencies into the install
+// target directory for executables. Requires CMake 3.14.
+X_VCPKG_APPLOCAL_DEPS_INSTALL:BOOL=OFF
+
+//(experimental) Add USES_TERMINAL to VCPKG_APPLOCAL_DEPS to force
+// serialization.
+X_VCPKG_APPLOCAL_DEPS_SERIALIZED:BOOL=OFF
+
+//Path to a program.
+Z_VCPKG_CL:FILEPATH=D:/App/vs2026/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe
+
+//Path to a program.
+Z_VCPKG_PWSH_PATH:FILEPATH=C:/Program Files/PowerShell/7/pwsh.exe
+
+//The directory which contains the installed libraries for each
+// triplet
+_VCPKG_INSTALLED_DIR:PATH=C:/src/vcpkg/installed
 
 
 ########################
@@ -409,6 +428,22 @@ CMAKE_STATIC_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_STATIC_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_TOOLCHAIN_FILE
+CMAKE_TOOLCHAIN_FILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Install the dependencies listed in your manifest:
+//\n    If this is off, you will have to manually install your dependencies.
+//\n    See https://github.com/microsoft/vcpkg/tree/master/docs/specifications/manifests.md
+// for more info.
+//\n
+VCPKG_MANIFEST_INSTALL:INTERNAL=OFF
+//ADVANCED property for variable: VCPKG_VERBOSE
+VCPKG_VERBOSE-ADVANCED:INTERNAL=1
+//Making sure VCPKG_MANIFEST_MODE doesn't change
+Z_VCPKG_CHECK_MANIFEST_MODE:INTERNAL=OFF
+//The path to the PowerShell implementation to use.
+Z_VCPKG_POWERSHELL_PATH:INTERNAL=C:/Program Files/PowerShell/7/pwsh.exe
+//Vcpkg root directory
+Z_VCPKG_ROOT_DIR:INTERNAL=C:/src/vcpkg
 

@@ -8,40 +8,48 @@
 			"path" : "Tester/Tester.pdb"
 		}
 	],
-	"backtrace" : 1,
+	"backtrace" : 2,
 	"backtraceGraph" : 
 	{
 		"commands" : 
 		[
+			"_add_executable",
 			"add_executable",
 			"target_link_libraries",
 			"target_include_directories"
 		],
 		"files" : 
 		[
+			"C:/src/vcpkg/scripts/buildsystems/vcpkg.cmake",
 			"Tester/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
 			{
-				"file" : 0
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 5,
+				"parent" : 0
 			},
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 4,
-				"parent" : 0
-			},
-			{
-				"command" : 1,
-				"file" : 0,
-				"line" : 10,
-				"parent" : 0
+				"line" : 600,
+				"parent" : 1
 			},
 			{
 				"command" : 2,
-				"file" : 0,
-				"line" : 6,
+				"file" : 1,
+				"line" : 11,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 7,
 				"parent" : 0
 			}
 		]
@@ -52,21 +60,21 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1 -std:c++20"
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 3,
+					"backtrace" : 4,
 					"path" : "D:/Code/Project/LDST/Tester/include"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"path" : "D:/Code/Project/LDST/Linear/include"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"path" : "D:/Code/Project/LDST/Util/include"
 				}
 			],
@@ -75,7 +83,7 @@
 			{
 				"backtraces" : 
 				[
-					1
+					2
 				],
 				"standard" : "20"
 			},
@@ -89,11 +97,11 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 2,
+			"backtrace" : 3,
 			"id" : "Linear::@273961348539268a46ea"
 		},
 		{
-			"backtrace" : 2,
+			"backtrace" : 3,
 			"id" : "Util::@985804b4fac11ee930c3"
 		}
 	],
@@ -103,7 +111,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1",
+				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1",
 				"role" : "flags"
 			},
 			{
@@ -115,12 +123,12 @@
 				"role" : "flags"
 			},
 			{
-				"backtrace" : 2,
+				"backtrace" : 3,
 				"fragment" : "Linear\\Linear.lib",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 2,
+				"backtrace" : 3,
 				"fragment" : "Util\\Util.lib",
 				"role" : "libraries"
 			},
@@ -161,28 +169,28 @@
 	"sources" : 
 	[
 		{
-			"backtrace" : 1,
+			"backtrace" : 2,
 			"path" : "Tester/include/LinkListTester.h",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 1,
+			"backtrace" : 2,
 			"path" : "Tester/include/Tester.h",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 1,
+			"backtrace" : 2,
 			"path" : "Tester/include/Tests.h",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 1,
+			"backtrace" : 2,
 			"compileGroupIndex" : 0,
 			"path" : "Tester/src/LinkListTester.cpp",
 			"sourceGroupIndex" : 1
 		},
 		{
-			"backtrace" : 1,
+			"backtrace" : 2,
 			"compileGroupIndex" : 0,
 			"path" : "Tester/src/Tests.cpp",
 			"sourceGroupIndex" : 1

@@ -4,14 +4,14 @@ namespace Collection
 {
 	namespace View
 	{
-		template<typename T>
-		concept is_node = requires(const T& node)
+		template<typename NodeType>
+		concept is_node = requires(NodeType * node)
 		{
 			{
-				node.next()
-			}->std::same_as<T*>;
+				node->next()
+			}->std::same_as<NodeType*>;
 			{
-				node.get()
+				node->get()
 			};
 		};
 		template<is_node Node>

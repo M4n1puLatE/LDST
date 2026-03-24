@@ -3,8 +3,9 @@
 #define DYNAMIC template<typename T>
 
 
-template<std::default_initializable T>
+template<typename  T>
 concept Container =
+
 std::default_initializable<T> &&           // 默认构造函数
 std::copy_constructible<T> &&              // 拷贝构造函数
 std::move_constructible<T> &&              // 移动构造函数
@@ -36,7 +37,7 @@ namespace Collection
 	class Node
 	{
 		T m_data;
-		T* m_next;
+		Node* m_next;
 
 	public:
 		Node()
@@ -53,14 +54,16 @@ namespace Collection
 		Node(Node* prev, Node* next)
 			:m_next(next)
 		{
+			if (prev)
 			prev->m_next = this;
 		}
 		Node(const T& data,Node* prev, Node* next)
 			:m_data(data),m_next(next)
 		{
+			if (prev)
 			prev->m_next = this;
 		}
-		T* next()
+		Node* next()
 		{
 			return m_next;
 		}
@@ -69,7 +72,7 @@ namespace Collection
 		{
 			return m_next != nullptr;
 		}
-		void setNext(T* next)
+		void setNext(Node* next)
 		{
 			m_next = next;
 		}
@@ -93,7 +96,7 @@ namespace Collection
 			}
 			return count;
 		}
-		T& get() const
+		const T& get() const
 		{
 			return m_data;
 		}

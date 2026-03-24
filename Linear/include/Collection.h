@@ -3,25 +3,25 @@
 namespace Collection
 {
 	template<typename T>
-	concept is_collection = requires(T& o)
+	concept is_collection = requires(T* o)
 	{
 		{
-			o.size()
-		}->std::same_as<size_t>;
+			o->size()
+		}->std::same_as<const size_t>;
 		{
-			o.get(0)
+			o->get(0)
 		}->std::same_as<T>;
 		{
-			o.set(0, T())
+			o->set(0, T())
 		}->std::same_as<bool>;
 		{
-			o.empty()
+			o->empty()
 		}->std::same_as<bool>;
 		{
-			o.first()
+			o->first()
 		}->std::same_as<T>;
 		{
-			o.last()
+			o->last()
 		}->std::same_as<T>;
 	};
 	
