@@ -210,7 +210,7 @@ namespace Tester
         Collection::Linear::LinkList<int> list1 = {1, 2, 3, 4, 5};
         Collection::Linear::LinkList<int> list2 = {6, 7, 8};
         // 测试用较短的列表覆盖较长的列表
-        list1.overwrite(list2);
+        list1.assign(list2);
         if (list1.size() != 3) return false;
         for (size_t i = 0; i < 3; i++) {
             if (list1.get(i) != list2.get(i)) return false;
@@ -218,7 +218,7 @@ namespace Tester
 
         // 测试用较长的列表覆盖较短的列表
         Collection::Linear::LinkList<int> list3 = {9, 10, 11, 12, 13, 14};
-        list1.overwrite(list3);
+        list1.assign(list3);
         if (list1.size() != 6) return false;
         for (size_t i = 0; i < 6; i++) {
             if (list1.get(i) != list3.get(i)) return false;
@@ -226,7 +226,7 @@ namespace Tester
 
         // 测试用相同大小的列表覆盖
         Collection::Linear::LinkList<int> list4 = {15, 16, 17, 18, 19, 20};
-        list1.overwrite(list4);
+        list1.assign(list4);
         if (list1.size() != 6) return false;
         for (size_t i = 0; i < 6; i++) {
             if (list1.get(i) != list4.get(i)) return false;
@@ -234,12 +234,12 @@ namespace Tester
 
         // 测试用空列表覆盖
         Collection::Linear::LinkList<int> emptyList;
-        list1.overwrite(emptyList);
+        list1.assign(emptyList);
         if (!list1.empty() || list1.size() != 0) return false;
 
         // 测试自覆盖
         Collection::Linear::LinkList<int> list5 = {21, 22, 23};
-        list5.overwrite(list5); // 应该没有变化
+        list5.assign(list5); // 应该没有变化
         if (list5.size() != 3) return false;
         if (list5.get(0) != 21 || list5.get(1) != 22 || list5.get(2) != 23) return false;
 
@@ -344,7 +344,7 @@ namespace Tester
         Collection::Linear::LinkList<int> list = {1, 2, 3};
 
         // 测试扩展列表
-        list.reserve(10);
+        list.resize(10);
         if (list.size() != 10) return false;
 
         // 检查前3个元素不变
@@ -357,18 +357,18 @@ namespace Tester
 
         // 测试扩展空列表
         Collection::Linear::LinkList<int> emptyList;
-        emptyList.reserve(5);
+        emptyList.resize(5);
         if (emptyList.size() != 5) return false;
         for (size_t i = 0; i < 5; i++) {
             if (emptyList.get(i) != 0) return false;
         }
 
         // 测试reserve小于当前大小（应该什么都不做）
-        list.reserve(5);
+        list.resize(5);
         if (list.size() != 10) return false; // 大小应保持不变
 
         // 测试reserve等于当前大小
-        list.reserve(10);
+        list.resize(10);
         if (list.size() != 10) return false;
 
         return true;
@@ -460,7 +460,7 @@ namespace Tester
 
         // 测试reserve后大小
         Collection::Linear::LinkList<int> list3;
-        list3.reserve(10);
+        list3.resize(10);
         if (list3.size() != 10) return false;
 
         return true;
@@ -492,7 +492,7 @@ namespace Tester
 
         // 测试reserve创建的列表（包含默认值）不为空
         Collection::Linear::LinkList<int> list3;
-        list3.reserve(5);
+        list3.resize(5);
         if (list3.empty()) return false;
 
         // 测试删除所有元素后变为空
@@ -532,7 +532,7 @@ namespace Tester
 
         // 测试清空后reserve
         list2.clear();
-        list2.reserve(5);
+        list2.resize(5);
         if (list2.size() != 5) return false;
         for (size_t i = 0; i < 5; i++) {
             if (list2.get(i) != 0) return false; // 默认值

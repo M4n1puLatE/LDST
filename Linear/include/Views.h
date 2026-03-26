@@ -4,6 +4,25 @@ namespace Collection
 {
 	namespace View
 	{
+		template <typename ViewType>
+		class CollectionView
+		{
+			ViewType* m_this;
+			size_t m_size;
+			void init()
+			{
+				m_this = static_cast<ViewType*>(this);
+			}
+		protected:
+			CollectionView()
+			{
+				init();
+			}
+			void resize(size_t size)
+			{
+				m_size = size;
+			}
+		};
 		template<typename NodeType>
 		concept is_node = requires(NodeType * node)
 		{

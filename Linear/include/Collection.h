@@ -2,75 +2,70 @@
 #include <concepts>
 namespace Collection
 {
-	template<typename T>
-	concept is_collection = requires(T* o)
-	{
-		{
-			o->size()
-		}->std::same_as<const size_t>;
-		{
-			o->get(0)
-		}->std::same_as<T>;
-		{
-			o->set(0, T())
-		}->std::same_as<bool>;
-		{
-			o->empty()
-		}->std::same_as<bool>;
-		{
-			o->first()
-		}->std::same_as<T>;
-		{
-			o->last()
-		}->std::same_as<T>;
-	};
-	
-	template<is_collection Collection>
-	class CollectionOperation
-	{
-		Collection* m_this;
 
+	template<class ACollection, class DataType>
+	class Collection
+	{
+		ACollection* m_this;
+
+		void init()
+		{
+			m_this = static_cast<ACollection*>(this);
+		}
 	protected:
-        CollectionOperation()
+		size_t m_size;
+		
+        Collection()
         {
-            m_this = static_cast<Collection*>(this);
+			init();
+        }
+		Collection(const Collection& other) noexcept
+			:m_size(other.size())
+        {
+			init();
+        }
+		Collection(const size_t size) noexcept
+			:m_size(size)
+        {
+			init();
         }
 	public:
-		template<is_collection Other>
-		bool assign(Other target)
+		size_t size() const noexcept
 		{
-			if (m_this->size() < target.size())
-			{
-				return false;
-			}
-			for (size_t i = 0; i < target.size(); i++)
-			{
-				m_this->set(i, target.get(i));
-			}
-			return true;
+			return m_size;
 		}
-        template<is_collection Other>
-		bool assignTo(Other target)
+		bool empty() const noexcept
 		{
-			if (m_this->size() > target.size())
-			{
-				return false;
-			}
-			for (size_t i = 0; i < m_this.size(); i++)
-			{
-				target.set(i, m_this.get(i));
-			}
-			return true;
+			return m_size == 0;
 		}
-        template<is_collection Other>
-		bool compare(Other target)const
+		bool assign(const Collection& target)
+		{
+			return m_this->assign(target);
+		}
+		bool contains(const DataType& data)
+		{
+			return m_this->contains(data);
+		}
+        const DataType& get(const size_t index)const
+		{
+			return m_this->get(index);
+		}
+		bool equals(const Collection& target)const
 		{
 			for (size_t i = 0; i < m_this.size(); i++)
 			{
-				if (target.get(i)!= m_this->get(i))
+				if (target.get(i) != get(i))
 					return false;
 			}
 			return true;
+		}
+		void clear()
+		{
+			return m_this->clear();
+		}
+		bool set(size_t pos, const DataType& data)
+		{
+			return m_this->set(pos, data);
 		}
 
 	};

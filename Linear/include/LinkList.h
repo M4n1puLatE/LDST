@@ -4,6 +4,7 @@
 #include <initializer_list>
 #include <iostream>
 
+#include "Collection.h"
 #include "Views.h"
 #include "Node.h"
 
@@ -30,16 +31,15 @@ namespace Collection
 	namespace Linear
 	{
 		CONTAINER
-		class LinkList
+		class LinkList: public Collection<LinkList<T>,T>
 		{
-			size_t m_size;
 			Node<T>* m_head;
 			Node<T>* m_end;
 		private:
 			//抛出OutOfRangeException
 			Node<T>* iterateUntil(size_t index)
 			{
-				if (index >= m_size)
+				if (index >= this->m_size)
 					throw Exceptions::OutOfRangeException(__func__);
 				else
 				{
@@ -48,7 +48,7 @@ namespace Collection
 			}
 			const Node<T>* iterateUntil(size_t index)const
 			{
-				if (index >= m_size)
+				if (index >= this->m_size)
 					throw Exceptions::OutOfRangeException(__func__);
 				else
 				{
@@ -57,11 +57,11 @@ namespace Collection
 			}
 			Node<T>* iterateUntilValue(const T& value)const
 			{
-				return iterate(m_head, value, m_size);
+				return iterate(m_head, value, this->m_size);
 			}
 			std::pair<const Node<T>*, const Node<T>*> iterateInterval(size_t index, size_t end)const
 			{
-				if (index >= m_size || end >= m_size)
+				if (index >= this->m_size || end >= this->m_size)
 					throw Exceptions::OutOfRangeException(__func__);
 				Node<T>* begin = m_head;
 				size_t n = 0;
@@ -78,7 +78,7 @@ namespace Collection
 			}
 			std::pair<Node<T>*, Node<T>*> iterateNonInterval(size_t index, size_t end)
 			{
-				if (index >= m_size || end > m_size)
+				if (index >= this->m_size || end > this->m_size)
 					throw Exceptions::OutOfRangeException(__func__);
 				Node<T>* begin = m_head;
 				size_t n = 0;
@@ -93,7 +93,7 @@ namespace Collection
 				}
 				return std::make_pair(begin, finish);
 			}
-			static Node<T>* iterate(Node<T>* begin, size_t index)
+			static Node<T>* iterate(Node<T>* begin, const size_t index)
 			{
 				Node<T>* iter = begin;
 				for (size_t n = 0; n < index; n++)
@@ -102,7 +102,7 @@ namespace Collection
 				}
 				return iter;
 			}
-			static Node<T>* iterate(Node<T>* begin, const T& value, size_t size)
+			static Node<T>* iterate(Node<T>* begin, const T& value,const size_t size)
 			{
 				Node<T>* iter = begin;
 				for (size_t n = 0; n < size; n++)
@@ -115,15 +115,17 @@ namespace Collection
 			}
 
 			LinkList(Node<T>* head, Node<T>* end, size_t size)
-				:m_size(size), m_head(head), m_end(end)
+				:Collection<LinkList>(size), m_head(head), m_end(end)
 			{}
 		public:
 			LinkList()
-				: m_size(0), m_head(nullptr), m_end(nullptr)
-			{}
+				: m_head(nullptr), m_end(nullptr)
+			{
+				this->m_size = 0;
+			}
 			View::ListView<Node<T>> range(size_t begin, size_t end)
 			{
-				if (end >= begin && end <= m_size)
+				if (end >= begin && end <= this->m_size)
 					return View::ListView<Node<T>>(iterateUntil(begin), end - begin);
 				else
 					return View::ListView<Node<T>>();
@@ -153,20 +155,20 @@ namespace Collection
 					add(value);
 				}
 			}
-			void overwrite(const LinkList& object)
+			void assign(const LinkList& object)
 			{
-				reserve(object.size());
+				resize(object.size());
 				for (size_t i = 0; i < object.size(); i++)
 				{
 					get(i) = object[i];
 				}
-				if (m_size > object.size())
-					removeFrom(object.size(), m_size - object.size());
+				if (this->m_size > object.size())
+					removeFrom(object.size(), this->m_size - object.size());
 			}
 			LinkList(const LinkList& object)
 				:LinkList()
 			{
-				overwrite(object);
+				assign(object);
 			}
 			LinkList(const std::initializer_list<T>& values)
 				:LinkList()
@@ -174,8 +176,9 @@ namespace Collection
 				add(values);
 			}
 			LinkList(LinkList&& move)noexcept
-				: m_size(move.m_size), m_head(move.m_head), m_end(move.m_end)
+				: m_head(move.m_head), m_end(move.m_end)
 			{
+				this->m_size = move.m_size;
 				move.m_head = nullptr;
 				move.m_end = nullptr;
 				move.m_size = 0;
@@ -183,7 +186,7 @@ namespace Collection
 			LinkList(size_t size)
 				:LinkList()
 			{
-				reserve(size);
+				resize(size);
 			}
 			//抛出OutOfRangeException
 			T& get(size_t index)
@@ -206,7 +209,7 @@ namespace Collection
 					m_end->setNext(new Node<T>(value));
 					m_end = m_end->next();
 				}
-				m_size++;
+				++this->m_size;
 				return last();
 			}
 			T& add(T&& move)
@@ -220,7 +223,7 @@ namespace Collection
 					m_end->setNext(new Node<T>(std::move(move)));
 					m_end = m_end->next();
 				}
-				m_size++;
+				++this->m_size;
 				return last();
 			}
 			bool contains(const T& value)const
@@ -231,7 +234,7 @@ namespace Collection
 			{
 				try
 				{
-					if (where == m_size-1)
+					if (where == this->m_size-1)
 					{
 						add(value);
 						return true;
@@ -241,7 +244,7 @@ namespace Collection
 						if (m_head)
 						{
 							m_head = new Node<T>(value, nullptr, m_head);
-							m_size++;
+							++this->m_size;
 						}
 						else
 						{
@@ -252,7 +255,7 @@ namespace Collection
 
 					auto ptr = iterateUntil(where-1);
 					ptr->setNext(new Node<T>(value, ptr, ptr->next()));
-					++m_size;
+					++this->m_size;
 					return true;
 				}
 				catch (Exceptions::OutOfRangeException& e)
@@ -279,11 +282,11 @@ namespace Collection
 						ptr = iterateUntil(where - 1);
 						cur = ptr->next();
 						ptr->setNext(cur->next());
-						if (where == m_size - 1)
+						if (where == this->m_size - 1)
                             m_end = ptr;
 					}
 					delete cur;
-					--m_size;
+					--this->m_size;
 					return true;
 				}
 				catch (Exceptions::OutOfRangeException& e)
@@ -296,11 +299,11 @@ namespace Collection
 			{
 				if (count == 0)
 					return true;
-				if (where + count > m_size)
+				if (where + count > this->m_size)
 				{
 					return false;
 				}
-				else if (where == 0 && count == m_size)
+				else if (where == 0 && count == this->m_size)
 				{
 					clear();
 					return true;
@@ -333,7 +336,7 @@ namespace Collection
 
                         begin = father;
 					}
-					m_size -= count;
+					this->m_size -= count;
 					return true;
 				}
 				catch (Exceptions::OutOfRangeException& e)
@@ -342,13 +345,13 @@ namespace Collection
 					return false;
 				}
 			}
-			void reserve(size_t size)
+			void resize(size_t size)
 			{
-				if (size <= m_size)
+				if (size <= this->m_size)
 					return;
 				else
 				{
-					for (size_t i = m_size; i < size; i++)
+					for (size_t i = this->m_size; i < size; ++i)
 						add(T());
 				}
 			}
@@ -371,12 +374,12 @@ namespace Collection
 			[[nodiscard]]
 			bool empty()const
 			{
-				return m_size == 0 || m_head == nullptr;
+				return this->m_size == 0 || m_head == nullptr;
 			}
 			[[nodiscard]]
 			size_t size() const
 			{
-				return m_size;
+				return this->m_size;
 			}
 			//设置所有成员变量为初始值，并回收内存
 			void clear()
@@ -390,7 +393,7 @@ namespace Collection
 				}
 				m_head = nullptr;
 				m_end = nullptr;
-				m_size = 0;
+				this->m_size = 0;
 			}
 			bool set(size_t index, const T& value)
 			{
@@ -408,7 +411,7 @@ namespace Collection
 			size_t count(const T& value)
 			{
 				size_t count = 0;
-				for (size_t i = 0; i < m_size; i++)
+				for (size_t i = 0; i < this->m_size; i++)
 				{
 					if (get(i) == value)
 						count++;
@@ -429,13 +432,13 @@ namespace Collection
 			{
 				if (this == &object)
 					return *this;
-				overwrite(object);
+				assign(object);
 				return *this;
 			}
 			LinkList& operator=(LinkList&& object)noexcept
 			{
 				clear();
-				m_size = object.m_size;
+				this->m_size = object.m_size;
 				m_head = object.m_head;
 				m_end = object.m_end;
 				object.m_size = 0;
